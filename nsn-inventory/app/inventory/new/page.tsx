@@ -109,7 +109,7 @@ export default function NewInventoryPage({
             ))}
           </Grid>
 
-          <Button type="submit" mt="3">
+          <Button type="submit" className="w-full sm:w-fit" mt="3">
             Submit New Inventory
           </Button>
         </Flex>
