@@ -1,4 +1,6 @@
-// components/AddInventoryForm.tsx
+"use client";
+import { CreateInventoryItem, InventoryItem } from "@/app/types/inventory";
+
 import {
   Flex,
   Box,
@@ -9,13 +11,13 @@ import {
   Heading,
   Grid,
 } from "@radix-ui/themes";
-import { CreateInventoryItem, InventoryItem } from "../types/inventory";
+
 import { useState } from "react";
 
 // Helper type for form state initialization
 type InventoryFormState = Omit<CreateInventoryItem, "timestamp">;
 
-export default function AddInventoryForm({
+export default function NewInventoryPage({
   onSubmit,
 }: {
   onSubmit: (item: InventoryItem) => void;
@@ -56,23 +58,19 @@ export default function AddInventoryForm({
   };
 
   return (
-    <Box mb="5">
+    <Box className="max-w-xl space-y-3 mb-5">
       <Heading mb="4" size="5">
-        Add New Item
+        Add New Inventory
       </Heading>
 
       <form onSubmit={handleSubmit}>
         <Flex direction="column" gap="3">
-          <TextField.Root>
-            <TextField.Root
-              placeholder="Item name"
-              value={formData.name}
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
-              required
-            />
-          </TextField.Root>
+          <TextField.Root
+            placeholder="Owner Name"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            required
+          />
 
           <TextArea
             placeholder="Description"
@@ -112,7 +110,7 @@ export default function AddInventoryForm({
           </Grid>
 
           <Button type="submit" mt="3">
-            Add Item
+            Submit New Inventory
           </Button>
         </Flex>
       </form>

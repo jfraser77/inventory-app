@@ -1,14 +1,15 @@
-export interface InventoryItem {
-  id: number;
+export interface CreateInventoryItem {
   name: string;
   description?: string;
-  timestamp: Date;
   computer: boolean;
   docking_station: boolean;
+  phone: boolean;
   monitors: boolean;
   printer: boolean;
-  phone: boolean;
   returned: boolean;
 }
 
-export type CreateInventoryItem = Omit<InventoryItem, "id" | "timestamp">;
+export interface InventoryItem extends CreateInventoryItem {
+  id: number;
+  timestamp: string;
+}
